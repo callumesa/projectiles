@@ -1,90 +1,3 @@
-function lightning (num: number, num2: number) {
-    if (facing == "right" && lightningCooldown == false) {
-        lightning2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
-            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
-            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
-            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, wizard, 200, 0)
-        lightningCooldown = true
-        info.startCountdown(1)
-    } else if (facing == "left" && lightningCooldown == false) {
-        lightning2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
-            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
-            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
-            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
-            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, wizard, -200, 0)
-        lightningCooldown = true
-        info.startCountdown(1)
-    } else if (facing == "up" && lightningCooldown == false) {
-        lightning2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, wizard, 0, -200)
-        lightningCooldown = true
-        info.startCountdown(1)
-    } else if (facing == "down" && lightningCooldown == false) {
-        lightning2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . 2 3 1 1 1 3 2 . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, wizard, 0, 200)
-        lightningCooldown = true
-        info.startCountdown(1)
-    }
-}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     facing = "up"
 })
@@ -92,9 +5,13 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (activeSpell == "fireball") {
         fireball()
     } else if (activeSpell == "lightning") {
-        lightning(1, 1)
+        lightning2(1, 1)
     } else if (activeSpell == "exploder") {
         exploder()
+    } else if (activeSpell == "lightning" && slowerLightning == true) {
+    	
+    } else {
+    	
     }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -119,6 +36,20 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         activeSpell = "exploder"
     } else if (exploderUnlocked && activeSpell == "exploder") {
         activeSpell = "fireball"
+    } else if (wizard.tileKindAt(TileDirection.Top, assets.tile`Sign3`)) {
+        game.splash("Slower Lightning")
+    } else if (wizard.tileKindAt(TileDirection.Top, assets.tile`myTile`)) {
+        slowerLightning = true
+    } else if (wizard.tileKindAt(TileDirection.Top, assets.tile`Sign2`)) {
+        game.splash("Pick Your Poison!")
+    } else if (wizard.tileKindAt(TileDirection.Top, assets.tile`Sign0`)) {
+        game.splash("Unsafe Explosions", "Your explosions hurt you too")
+    } else if (wizard.tileKindAt(TileDirection.Top, assets.tile`exploderCurse`)) {
+        unsafeExplosions = true
+    } else if (wizard.tileKindAt(TileDirection.Top, assets.tile`Sign3`)) {
+        game.splash("Deadlier Enemies", "Enemies do double damage")
+    } else if (wizard.tileKindAt(TileDirection.Top, assets.tile`myTile0`)) {
+        deadlierEnemies = true
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -133,8 +64,6 @@ info.onCountdownEnd(function () {
         lightningCooldown = false
     } else if (level == 4 && exploderUnlocked) {
         exploderCooldown = false
-    } else {
-    	
     }
 })
 function level2 (num: number) {
@@ -152,6 +81,18 @@ function level2 (num: number) {
         setupGame(2)
         monsterMaker(5, 1)
         level = 4
+    } else if (num == 4) {
+        for (let value of monsters) {
+            sprites.destroy(value)
+        }
+        tiles.placeOnTile(wizard, tiles.getTileLocation(6, 7))
+        if (lightningBoltUnlocked) {
+            tiles.setCurrentTilemap(tilemap`level4`)
+            level = 5
+        } else if (exploderUnlocked) {
+            tiles.setCurrentTilemap(tilemap`level4`)
+            level = 5
+        }
     }
 }
 function setupGame (num: number) {
@@ -179,6 +120,7 @@ function setupGame (num: number) {
         tiles.placeOnRandomTile(wizard, sprites.dungeon.darkGroundCenter)
         scene.cameraFollowSprite(wizard)
         monsters = []
+        inventory = []
         activeSpell = "fireball"
         lightningBoltUnlocked = false
         exploderCooldown = false
@@ -216,7 +158,7 @@ function monsterMaker (num: number, num2: number) {
             ........................
             ........................
             `, SpriteKind.Enemy)
-        tiles.placeOnRandomTile(monster, sprites.dungeon.floorLight0)
+        tiles.placeOnRandomTile(monster, assets.tile`transparency16`)
         monster.follow(wizard, 50)
         monsters.push(monster)
     }
@@ -393,6 +335,96 @@ function fireball () {
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     facing = "down"
 })
+function lightning2 (num: number, num2: number) {
+    if (facing == "right" && lightningCooldown == false) {
+        lightning = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
+            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
+            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, wizard, 200 / num, 0)
+        lightningCooldown = true
+        info.startCountdown(1)
+    } else if (facing == "left" && lightningCooldown == false) {
+        lightning = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
+            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+            . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+            . . 3 3 3 3 3 3 3 3 3 3 3 3 . . 
+            . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, wizard, -200 / num, 0)
+        lightningCooldown = true
+        info.startCountdown(1)
+    } else if (facing == "up" && lightningCooldown == false) {
+        lightning = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, wizard, 0, -200 / num)
+        lightningCooldown = true
+        info.startCountdown(1)
+    } else if (facing == "down" && lightningCooldown == false) {
+        lightning = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . 2 3 1 1 1 3 2 . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, wizard, 0, 200 / num)
+        lightningCooldown = true
+        info.startCountdown(1)
+    }
+}
+info.onScore(150, function () {
+    level2(4)
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (activeSpell == "lightning") {
         monsterMaker(1, 1)
@@ -445,27 +477,37 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    sprites.destroy(otherSprite)
-    monsterMaker(1, 1)
+    if (deadlierEnemies == true) {
+        info.changeLifeBy(-2)
+        sprites.destroy(otherSprite)
+        monsterMaker(1, 1)
+    } else if (deadlierEnemies == false) {
+        info.changeLifeBy(-1)
+        sprites.destroy(otherSprite)
+        monsterMaker(1, 1)
+    }
 })
 let explosion: Sprite = null
+let lightning: Sprite = null
 let projectile: Sprite = null
 let monster: Sprite = null
+let inventory: number[] = []
 let monsters: Sprite[] = []
 let exploderCooldown = false
+let lightningCooldown = false
 let level = 0
+let deadlierEnemies = false
+let unsafeExplosions = false
 let exploderUnlocked = false
 let lightningBoltUnlocked = false
-let activeSpell = ""
 let wizard: Sprite = null
-let lightning2: Sprite = null
-let lightningCooldown = false
+let slowerLightning = false
+let activeSpell = ""
 let facing = ""
 setupGame(1)
 monsterMaker(5, 1)
 info.startCountdown(10)
-info.setLife(3)
+info.setLife(10)
 game.onUpdateInterval(2000, function () {
     if (exploderCooldown) {
         exploderCooldown = false

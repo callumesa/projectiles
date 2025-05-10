@@ -1,98 +1,3 @@
-def lightning(num: number, num2: number):
-    global lightning2, lightningCooldown
-    if facing == "right" and lightningCooldown == False:
-        lightning2 = sprites.create_projectile_from_sprite(img("""
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
-                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
-                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
-                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                """),
-            wizard,
-            200,
-            0)
-        lightningCooldown = True
-    elif facing == "left" and lightningCooldown == False:
-        lightning2 = sprites.create_projectile_from_sprite(img("""
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
-                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
-                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
-                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
-                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                """),
-            wizard,
-            -200,
-            0)
-        lightningCooldown = True
-    elif facing == "up" and lightningCooldown == False:
-        lightning2 = sprites.create_projectile_from_sprite(img("""
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                """),
-            wizard,
-            0,
-            -200)
-        lightningCooldown = True
-    elif facing == "down" and lightningCooldown == False:
-        lightning2 = sprites.create_projectile_from_sprite(img("""
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . 2 3 1 1 1 3 2 . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                . . . . . . . . . . . . . . . .
-                """),
-            wizard,
-            0,
-            200)
-        lightningCooldown = True
-
 def on_up_pressed():
     global facing
     facing = "up"
@@ -102,27 +7,10 @@ def on_b_pressed():
     if activeSpell == "fireball":
         fireball()
     elif activeSpell == "lightning":
-        lightning(1, 1)
+        lightning2(1, 1)
     elif activeSpell == "exploder":
         exploder()
 controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
-
-def level(num3: number):
-    global level2
-    if num3 == 2:
-        for value in monsters:
-            sprites.destroy(value)
-        tiles.set_current_tilemap(tilemap("""
-            level2
-            """))
-        tiles.place_on_tile(wizard, tiles.get_tile_location(5, 10))
-        level2 = 2
-    elif num3 == 3:
-        for value2 in monsters:
-            sprites.destroy(value2)
-            tiles.set_current_tilemap(tilemap("""
-                level0
-                """))
 
 def on_a_pressed():
     global lightningBoltUnlocked, exploderUnlocked, activeSpell
@@ -138,6 +26,7 @@ def on_a_pressed():
             """)):
         game.splash("Lightning Bolt Unlocked!", "Press A To Switch Spells")
         lightningBoltUnlocked = True
+        level2(3)
     elif wizard.tile_kind_at(TileDirection.TOP, assets.tile("""
         boomSign0
         """)):
@@ -148,6 +37,7 @@ def on_a_pressed():
         """)):
         game.splash("Exploder Unlocked!", "Press A To Switch Spells")
         exploderUnlocked = True
+        level2(3)
     elif lightningBoltUnlocked and activeSpell == "fireball":
         activeSpell = "lightning"
     elif lightningBoltUnlocked and activeSpell == "lightning":
@@ -156,6 +46,20 @@ def on_a_pressed():
         activeSpell = "exploder"
     elif exploderUnlocked and activeSpell == "exploder":
         activeSpell = "fireball"
+    elif wizard.tile_kind_at(TileDirection.TOP, assets.tile("""
+        Sign1
+        """)):
+        game.splash("")
+    elif wizard.tile_kind_at(TileDirection.TOP, assets.tile("""
+        myTile
+        """)):
+        pass
+    elif wizard.tile_kind_at(TileDirection.TOP, assets.tile("""
+        Sign2
+        """)):
+        game.splash("Pick Your Poison!")
+    else:
+        pass
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
 def on_left_pressed():
@@ -164,47 +68,83 @@ def on_left_pressed():
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
 def on_countdown_end():
-    if level2 == 1:
-        level(2)
-    elif level2 == 1:
-        level(3)
+    global lightningCooldown, exploderCooldown
+    if level == 1:
+        level2(2)
+    elif level == 3:
+        level2(3)
+    elif level == 4 and lightningBoltUnlocked:
+        lightningCooldown = False
+    elif level == 4 and exploderUnlocked:
+        exploderCooldown = False
 info.on_countdown_end(on_countdown_end)
 
-def setupGame(num4: number):
-    global wizard, monsters, activeSpell, lightningBoltUnlocked, exploderCooldown, level2
-    tiles.set_current_tilemap(tilemap("""
-        level1
-        """))
-    wizard = sprites.create(img("""
-            . . . . . . . c c c . . . . . .
-            . . . . . . c b 2 c . . . . . .
-            . . . . c c c 2 2 c c c . . . .
-            . . c c b c 2 2 2 2 c c c c . .
-            . c b b 4 b 4 4 4 4 b 4 b b c .
-            . c b 4 4 b b 4 4 b b 4 4 b c .
-            . . f 4 4 4 b b b b 4 4 4 c . .
-            . . f f 4 4 4 4 4 4 4 4 f f . .
-            . . f f f b f e e f b f f f . .
-            . . f f f 1 f b b f 1 f f f . .
-            . . . f f b b b b b b f f . . .
-            . . . e e f e e e e f e e . . .
-            . . e b c b 4 b b 4 b f b e . .
-            . . e e f 4 4 4 4 4 4 f e e . .
-            . . . . c b 4 4 4 4 b c . . . .
-            . . . . . f f f f f f . . . . .
-            """),
-        SpriteKind.player)
-    controller.move_sprite(wizard)
-    tiles.place_on_random_tile(wizard, sprites.dungeon.dark_ground_center)
-    scene.camera_follow_sprite(wizard)
-    monsters = []
-    activeSpell = "fireball"
-    lightningBoltUnlocked = False
-    exploderCooldown = False
-    level2 = 1
-def monsterMaker(num5: number, num22: number):
+def level2(num: number):
+    global level
+    if num == 2:
+        for value in monsters:
+            sprites.destroy(value)
+        tiles.set_current_tilemap(tilemap("""
+            level2
+            """))
+        tiles.place_on_tile(wizard, tiles.get_tile_location(5, 10))
+        level = 2
+    elif num == 3:
+        for value2 in monsters:
+            sprites.destroy(value2)
+        setupGame(2)
+        monsterMaker(5, 1)
+        level = 4
+    elif num == 4:
+        for value3 in monsters:
+            sprites.destroy(value3)
+        tiles.place_on_tile(wizard, tiles.get_tile_location(6, 7))
+        tiles.set_current_tilemap(tilemap("""
+            level4
+            """))
+        level = 5
+def setupGame(num2: number):
+    global wizard, monsters, inventory, activeSpell, lightningBoltUnlocked, exploderCooldown, level
+    if 1 == num2:
+        tiles.set_current_tilemap(tilemap("""
+            level1
+            """))
+        wizard = sprites.create(img("""
+                . . . . . . . c c c . . . . . .
+                . . . . . . c b 2 c . . . . . .
+                . . . . c c c 2 2 c c c . . . .
+                . . c c b c 2 2 2 2 c c c c . .
+                . c b b 4 b 4 4 4 4 b 4 b b c .
+                . c b 4 4 b b 4 4 b b 4 4 b c .
+                . . f 4 4 4 b b b b 4 4 4 c . .
+                . . f f 4 4 4 4 4 4 4 4 f f . .
+                . . f f f b f e e f b f f f . .
+                . . f f f 1 f b b f 1 f f f . .
+                . . . f f b b b b b b f f . . .
+                . . . e e f e e e e f e e . . .
+                . . e b c b 4 b b 4 b f b e . .
+                . . e e f 4 4 4 4 4 4 f e e . .
+                . . . . c b 4 4 4 4 b c . . . .
+                . . . . . f f f f f f . . . . .
+                """),
+            SpriteKind.player)
+        controller.move_sprite(wizard)
+        tiles.place_on_random_tile(wizard, sprites.dungeon.dark_ground_center)
+        scene.camera_follow_sprite(wizard)
+        monsters = []
+        inventory = []
+        activeSpell = "fireball"
+        lightningBoltUnlocked = False
+        exploderCooldown = False
+        level = 1
+    elif 2 == num2:
+        tiles.set_current_tilemap(tilemap("""
+            level1
+            """))
+        tiles.place_on_random_tile(wizard, sprites.dungeon.dark_ground_center)
+def monsterMaker(num3: number, num22: number):
     global monster
-    for index in range(num5):
+    for index in range(num3):
         monster = sprites.create(img("""
                 ........................
                 ........................
@@ -260,6 +200,7 @@ def exploder():
             150,
             0)
         exploderCooldown = True
+        info.start_countdown(2)
     elif exploderCooldown == False and facing == "left":
         projectile = sprites.create_projectile_from_sprite(img("""
                 . . . . . . . . . . . . . . . .
@@ -283,6 +224,7 @@ def exploder():
             -150,
             0)
         exploderCooldown = True
+        info.start_countdown(2)
     elif exploderCooldown == False and facing == "up":
         projectile = sprites.create_projectile_from_sprite(img("""
                 . . . . . . . . . . . . . . . .
@@ -306,6 +248,7 @@ def exploder():
             0,
             -150)
         exploderCooldown = True
+        info.start_countdown(2)
     elif exploderCooldown == False and facing == "down":
         projectile = sprites.create_projectile_from_sprite(img("""
                 . . . . . . . . . . . . . . . .
@@ -329,6 +272,7 @@ def exploder():
             0,
             150)
         exploderCooldown = True
+        info.start_countdown(2)
 
 def on_right_pressed():
     global facing
@@ -431,15 +375,120 @@ def on_down_pressed():
     facing = "down"
 controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
 
+def lightning2(num4: number, num23: number):
+    global lightning, lightningCooldown
+    if facing == "right" and lightningCooldown == False:
+        lightning = sprites.create_projectile_from_sprite(img("""
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
+                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
+                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
+                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
+                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
+                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                """),
+            wizard,
+            200,
+            0)
+        lightningCooldown = True
+        info.start_countdown(1)
+    elif facing == "left" and lightningCooldown == False:
+        lightning = sprites.create_projectile_from_sprite(img("""
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
+                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
+                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
+                . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
+                . . 3 3 3 3 3 3 3 3 3 3 3 3 . .
+                . . 2 2 2 2 2 2 2 2 2 2 2 2 . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                """),
+            wizard,
+            -200,
+            0)
+        lightningCooldown = True
+        info.start_countdown(1)
+    elif facing == "up" and lightningCooldown == False:
+        lightning = sprites.create_projectile_from_sprite(img("""
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                """),
+            wizard,
+            0,
+            -200)
+        lightningCooldown = True
+        info.start_countdown(1)
+    elif facing == "down" and lightningCooldown == False:
+        lightning = sprites.create_projectile_from_sprite(img("""
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . 2 3 1 1 1 3 2 . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                """),
+            wizard,
+            0,
+            200)
+        lightningCooldown = True
+        info.start_countdown(1)
+
+def on_on_score():
+    level2(4)
+info.on_score(150, on_on_score)
+
 def on_on_overlap(sprite, otherSprite):
     global explosion
     if activeSpell == "lightning":
         monsterMaker(1, 1)
         sprites.destroy(otherSprite)
+        info.change_score_by(5)
     elif activeSpell == "fireball":
         monsterMaker(1, 1)
         sprites.destroy(otherSprite)
         sprites.destroy(sprite)
+        info.change_score_by(5)
     elif activeSpell == "exploder":
         monsterMaker(1, 1)
         sprites.destroy(otherSprite)
@@ -481,6 +530,7 @@ def on_on_overlap(sprite, otherSprite):
             0,
             0)
         sprites.destroy(sprite)
+        info.change_score_by(5)
 sprites.on_overlap(SpriteKind.projectile, SpriteKind.enemy, on_on_overlap)
 
 def on_on_overlap2(sprite2, otherSprite2):
@@ -490,18 +540,20 @@ def on_on_overlap2(sprite2, otherSprite2):
 sprites.on_overlap(SpriteKind.player, SpriteKind.enemy, on_on_overlap2)
 
 explosion: Sprite = None
+lightning: Sprite = None
 projectile: Sprite = None
 monster: Sprite = None
+inventory: List[number] = []
+monsters: List[Sprite] = []
 exploderCooldown = False
+lightningCooldown = False
+level = 0
 exploderUnlocked = False
 lightningBoltUnlocked = False
-level2 = 0
-monsters: List[Sprite] = []
-activeSpell = ""
 wizard: Sprite = None
-lightning2: Sprite = None
-lightningCooldown = False
+activeSpell = ""
 facing = ""
+setupGame(1)
 monsterMaker(5, 1)
 info.start_countdown(10)
 info.set_life(3)
@@ -513,12 +565,8 @@ def on_update_interval():
 game.on_update_interval(2000, on_update_interval)
 
 def on_update_interval2():
-    global lightningCooldown
-    if lightningCooldown:
-        lightningCooldown = False
-    else:
-        sprites.destroy(explosion)
-game.on_update_interval(1000, on_update_interval2)
+    sprites.destroy(explosion)
+game.on_update_interval(1500, on_update_interval2)
 
 def on_forever():
     if facing == "right":
